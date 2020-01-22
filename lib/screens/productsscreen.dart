@@ -1,9 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:kota_carniwal2020/providers/productsprovider.dart';
+import 'package:provider/provider.dart';
 
-class ProductsScreen extends StatelessWidget {
+class ProductsScreen extends StatefulWidget {
+
   static const routename = '/productsscreen';
+
+  @override
+  _ProductsScreenState createState() => _ProductsScreenState();
+}
+
+class _ProductsScreenState extends State<ProductsScreen> {
+  Future<void> getProductsData(BuildContext context) async {
+    print('I am Active');
+    await Provider.of<ProductsProvider>(context, listen: false).fetchAndSetProducts(context);
+    setState(() {
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+  final productData = Provider.of<ProductsProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text('Products'),
@@ -19,6 +36,11 @@ class ProductsScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text('Listed Products'),
+            RaisedButton(
+              child: Text('Fetch Data'),
+              onPressed: () => getProductsData(context),
+            ),
+            Text(productData.unresponse),
           ],
         ),
       ),

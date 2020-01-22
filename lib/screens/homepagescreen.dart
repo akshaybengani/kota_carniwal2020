@@ -4,7 +4,7 @@ import 'package:kota_carniwal2020/screens/barcodescanner.dart';
 import 'package:kota_carniwal2020/screens/productsscreen.dart';
 import 'package:kota_carniwal2020/screens/supportscreen.dart';
 import 'package:kota_carniwal2020/screens/transactionhistoryscreen.dart';
-
+import 'package:share/share.dart';
 
 class HomePageScreen extends StatelessWidget {
   static const routename = '/homepagescreen';
@@ -17,7 +17,10 @@ class HomePageScreen extends StatelessWidget {
         title: Text('Dashboard'),
         actions: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Share.share(
+                  'Hey Download this amazing app for Kota Carniwal 2020 \n https://play.google.com/store/apps/details?id=com.akshaybengani.kocacarniwal2020 ');
+            },
             icon: Icon(Icons.share),
           ),
           IconButton(
@@ -47,7 +50,8 @@ class HomePageScreen extends StatelessWidget {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pushNamed(BarCodeScanner.routename);
+                          Navigator.of(context)
+                              .pushNamed(BarCodeScanner.routename);
                         },
                         child: Image.asset("assets/barcodescanner.png",
                             width: 100, height: 100),
@@ -59,7 +63,8 @@ class HomePageScreen extends StatelessWidget {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pushNamed(TransactionHistoryScreen.routename);
+                          Navigator.of(context)
+                              .pushNamed(TransactionHistoryScreen.routename);
                         },
                         child: Image.asset("assets/transactionhistory.png",
                             width: 100, height: 100),
@@ -81,7 +86,8 @@ class HomePageScreen extends StatelessWidget {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pushNamed(ProductsScreen.routename);
+                          Navigator.of(context)
+                              .pushNamed(ProductsScreen.routename);
                         },
                         child: Image.asset("assets/cart.png",
                             width: 100, height: 100),
@@ -94,7 +100,8 @@ class HomePageScreen extends StatelessWidget {
                     children: <Widget>[
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pushNamed(SupportScreen.routename);
+                          Navigator.of(context)
+                              .pushNamed(SupportScreen.routename);
                         },
                         child: Image.asset("assets/support.png",
                             width: 100, height: 100),
