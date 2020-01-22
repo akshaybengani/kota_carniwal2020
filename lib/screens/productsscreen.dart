@@ -11,9 +11,9 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  Future<void> getProductsData(BuildContext context) async {
+  Future<void> getProductsData(BuildContext context, var vendorid) async {
     print('I am Active');
-    await Provider.of<ProductsProvider>(context, listen: false).fetchAndSetProducts(context);
+    await Provider.of<ProductsProvider>(context, listen: false).fetchAndSetProducts(context, vendorid);
     setState(() {
     });
   }
@@ -21,6 +21,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
   final productData = Provider.of<ProductsProvider>(context, listen: false);
+  final vendorid = 8;
     return Scaffold(
       appBar: AppBar(
         title: Text('Products'),
@@ -38,9 +39,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
             Text('Listed Products'),
             RaisedButton(
               child: Text('Fetch Data'),
-              onPressed: () => getProductsData(context),
+              onPressed: () => getProductsData(context, 8),
             ),
-            Text(productData.unresponse),
+            Text(productData.myresponse),
           ],
         ),
       ),

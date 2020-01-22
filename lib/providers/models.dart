@@ -1,15 +1,13 @@
 class Product {
-  final String pid;
-  final String name;
-  final String category;
-  final double price;
+  final String id;
+  final String product_name;
+  final String price;
 
-  Product(
-    this.pid,
-    this.name,
-    this.category,
+  Product({
+    this.id,
+    this.product_name,
     this.price,
-  );
+  });
 }
 
 class Student {
