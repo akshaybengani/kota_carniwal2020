@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kota_carniwal2020/layouts/producttile.dart';
+import 'package:kota_carniwal2020/providers/auth.dart';
 import 'package:kota_carniwal2020/providers/productsprovider.dart';
 import 'package:provider/provider.dart';
 
 class ProductsScreen extends StatefulWidget {
-
   static const routename = '/productsscreen';
 
   @override
@@ -11,17 +12,29 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  Future<void> getProductsData(BuildContext context, var vendorid) async {
-    print('I am Active');
-    await Provider.of<ProductsProvider>(context, listen: false).fetchAndSetProducts(context, vendorid);
-    setState(() {
+  var isLoading = true;
+
+  @override
+  void initState() {
+    refreshProducts(context).then((result) {
+      setState(() {
+        isLoading = false;
+      });
     });
+  }
+
+  Future<void> refreshProducts(BuildContext context) async {
+    final vendorid = Provider.of<Auth>(context, listen: false).vendorid;
+    print('Why I am printing');
+    await Provider.of<ProductsProvider>(context, listen: false)
+        .fetchAndSetProducts(vendorid);
   }
 
   @override
   Widget build(BuildContext context) {
-  final productData = Provider.of<ProductsProvider>(context, listen: false);
-  final vendorid = 8;
+    final productData =
+        Provider.of<ProductsProvider>(context, listen: true).items;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Products'),
@@ -32,18 +45,24 @@ class _ProductsScreenState extends State<ProductsScreen> {
           ),
         ],
       ),
-      body: Container(
-        margin: EdgeInsets.all(20),
-        child: Column(
-          children: <Widget>[
-            Text('Listed Products'),
-            RaisedButton(
-              child: Text('Fetch Data'),
-              onPressed: () => getProductsData(context, 8),
-            ),
-            Text(productData.myresponse),
-          ],
-        ),
+      body: RefreshIndicator(
+        onRefresh: () => refreshProducts(context),
+        child: isLoading
+            ? Center(child: CircularProgressIndicator())
+            : Container(
+                margin: EdgeInsets.all(20),
+                child: GridView.builder(
+                  padding: EdgeInsets.all(10),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 3 / 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemCount: productData.length,
+                  itemBuilder: (ctx, index) => ProductTile(productData[index]),
+                ),
+              ),
       ),
     );
   }

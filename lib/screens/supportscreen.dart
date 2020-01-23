@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class SupportScreen extends StatelessWidget {
   static const routename = '/supportscreen';
@@ -29,49 +30,57 @@ class SupportScreen extends StatelessWidget {
                   decoration: TextDecoration.underline,
                   fontWeight: FontWeight.bold),
             ),
-            Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.green,
+            GestureDetector(
+              onTap: (){
+                Share.share('tel:9876543210');
+              },
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.green,
+                    ),
+                    child: Icon(
+                      Icons.call,
+                      color: Colors.white,
+                      size: 50,
+                    ),
                   ),
-                  child: Icon(
-                    Icons.call,
-                    color: Colors.white,
-                    size: 50,
-                  ),
-                ),
-                 SizedBox(height: 20),
-                Text('Call Us',
-                    style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                Text('+91-9876543210',
-                    style: TextStyle(fontSize: 15))
-              ],
+                  SizedBox(height: 20),
+                  Text('Call Us',
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                  Text('+91-9876543210', style: TextStyle(fontSize: 15))
+                ],
+              ),
             ),
-            Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.green,
+            GestureDetector(
+              onTap: (){
+                Share.share('support@motion.ac.in', subject: 'Help Needed!!');
+              },
+              child: Column(
+                       children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.green,
+                    ),
+                    child: Icon(
+                      Icons.email,
+                      color: Colors.white,
+                      size: 50,
+                    ),
                   ),
-                  child: Icon(
-                    Icons.email,
-                    color: Colors.white,
-                    size: 50,
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text('Mail Us',
-                    style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                Text('support@motion.ac.in',
-                    style: TextStyle(fontSize: 15))
-              ],
+                  SizedBox(height: 20),
+                  Text('Mail Us',
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                  Text('support@motion.ac.in', style: TextStyle(fontSize: 15))
+                ],
+              ),
             ),
           ],
         ),

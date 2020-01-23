@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kota_carniwal2020/providers/auth.dart';
 import 'package:kota_carniwal2020/providers/productsprovider.dart';
 import 'package:kota_carniwal2020/screens/barcodescanner.dart';
 import 'package:kota_carniwal2020/screens/homepagescreen.dart';
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(
           value: ProductsProvider(),
+        ),
+        ChangeNotifierProvider.value(
+          value: Auth(),
         )
       ],
       child: MaterialApp(

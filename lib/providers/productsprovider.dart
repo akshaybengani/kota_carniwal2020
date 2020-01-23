@@ -8,10 +8,10 @@ class ProductsProvider with ChangeNotifier {
   List<Product> _items = [];
 
   List<Product> get items {
-    return [..._items];
+    return _items;
   }
 
-  Future<void> fetchAndSetProducts(BuildContext context, vendorid) async {
+  Future<void> fetchAndSetProducts(String vendorid) async {
     final url =
         'http://34.217.102.83/koca/index.php?/api_new/vendorProductList';
 
@@ -24,16 +24,16 @@ class ProductsProvider with ChangeNotifier {
         headers: {'Vendorid': '$vendorid'},
       );
       final extractedData = json.decode(response.body);
-      print(extractedData);
+      //print(extractedData);
 
       // This is the bool status is everything ok or not
-      final String status = extractedData['response']['status'];
+      //final String status = extractedData['response']['status'];
 
       // This is the reason why I am getting result
-      final String msg = extractedData['response']['msg'];
+      //final String msg = extractedData['response']['msg'];
 
       // If in case the message and status both are correct then only fetching and list data addup will start
-      if (status == 'true' && msg == 'Record found') {
+      //if (status == 'true' && msg == 'Record found') {
         myresponse = 'Record Found All Ok';
         // Capturing Products data from the json result
         _loadedProducts = extractedData['response']['data']['product'];
@@ -52,10 +52,10 @@ class ProductsProvider with ChangeNotifier {
         _items = actualProduct;
         // This is to notify all my nodes who are listening for the change
         notifyListeners();
-      } else {
-        myresponse = "Record Not Found";
-        print(myresponse);
-      }
+      // } else {
+      //   myresponse = "Record Not Found";
+      //   //print(myresponse);
+      // }
     } catch (e) {
       print('Some error occured \n $e');
       myresponse = e.toString();
@@ -63,6 +63,6 @@ class ProductsProvider with ChangeNotifier {
     }
   }
 
-    
+
 
 }

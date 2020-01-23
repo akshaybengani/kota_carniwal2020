@@ -33,19 +33,15 @@ class Student {
 }
 
 class Vendor {
-  final String vid;
-  final String name;
+  final String id;
+  final String vendor_name;
+  final String contact;
   final String email;
-  final String mobile;
-  final String address;
-  final String password;
 
-  Vendor(
-    this.vid,
-    this.name,
+  Vendor({
+    this.id,
+    this.vendor_name,
+    this.contact,
     this.email,
-    this.mobile,
-    this.address,
-    this.password,
-  );
+  });
 }
