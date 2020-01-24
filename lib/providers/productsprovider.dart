@@ -5,6 +5,7 @@ import 'package:kota_carniwal2020/providers/models.dart';
 
 class ProductsProvider with ChangeNotifier {
   String myresponse = "";
+  Product my1stProduct;
   List<Product> _items = [];
 
   List<Product> get items {
@@ -34,24 +35,30 @@ class ProductsProvider with ChangeNotifier {
 
       // If in case the message and status both are correct then only fetching and list data addup will start
       //if (status == 'true' && msg == 'Record found') {
-        myresponse = 'Record Found All Ok';
-        // Capturing Products data from the json result
-        _loadedProducts = extractedData['response']['data']['product'];
+      myresponse = 'Record Found All Ok';
+      // Capturing Products data from the json result
+      _loadedProducts = extractedData['response']['data']['product'];
 
-        // Adding Data from LoadedProductList to ActualProductList.
-        // This is required because my backend friend have not used correct types
-        for (int i = 0; i < _loadedProducts.length; i++) {
-          actualProduct.add(Product(
-            id: _loadedProducts[i]['id'].toString(),
-            product_name: _loadedProducts[i]['product_name'].toString(),
-            price: _loadedProducts[i]['price'],
-          ));
-        }
+      // Adding Data from LoadedProductList to ActualProductList.
+      // This is required because my backend friend have not used correct types
+      for (int i = 0; i < _loadedProducts.length; i++) {
+        actualProduct.add(Product(
+          id: _loadedProducts[i]['id'].toString(),
+          product_name: _loadedProducts[i]['product_name'].toString(),
+          price: _loadedProducts[i]['price'],
+        ));
+      }
+      // This is for scan activity
+      my1stProduct = Product(
+        id: _loadedProducts[0]['id'].toString(),
+        product_name: _loadedProducts[0]['product_name'].toString(),
+        price: _loadedProducts[0]['price'],
+      );
 
-        // Adding the Downloaded or updated data to the central Database node
-        _items = actualProduct;
-        // This is to notify all my nodes who are listening for the change
-        notifyListeners();
+      // Adding the Downloaded or updated data to the central Database node
+      _items = actualProduct;
+      // This is to notify all my nodes who are listening for the change
+      notifyListeners();
       // } else {
       //   myresponse = "Record Not Found";
       //   //print(myresponse);
@@ -62,7 +69,4 @@ class ProductsProvider with ChangeNotifier {
       notifyListeners();
     }
   }
-
-
-
 }

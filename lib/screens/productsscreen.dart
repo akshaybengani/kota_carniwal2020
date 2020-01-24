@@ -16,6 +16,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
   @override
   void initState() {
+    super.initState();
     refreshProducts(context).then((result) {
       setState(() {
         isLoading = false;

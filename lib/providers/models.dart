@@ -45,3 +45,18 @@ class Vendor {
     this.email,
   });
 }
+
+class Transaction {
+  final int transaction_amount;
+  final String product_name;
+  final int product_price;
+  final int transactionStatus;
+
+  Transaction({
+    this.transaction_amount,
+    this.product_name,
+    this.product_price,
+    this.transactionStatus,
+  });
+  
+}

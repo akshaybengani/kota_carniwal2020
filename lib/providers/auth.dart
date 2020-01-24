@@ -6,13 +6,15 @@ import 'dart:convert';
 import 'models.dart';
 
 class Auth with ChangeNotifier {
-  bool authCheck;
   String vendorid;
   Vendor vendor;
 
   // Future<void> isAuth() async {
   //   this.authCheck = await true;
   // }
+  void signOut() {
+    vendorid = ""; 
+  } 
 
   Future<void> signInWithEmailPassword(String email, String password) async {
     final url =

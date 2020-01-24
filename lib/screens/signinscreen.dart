@@ -6,6 +6,9 @@ import 'package:kota_carniwal2020/screens/homepagescreen.dart';
 import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
+
+  static const routename = "/signinscreen";
+
   @override
   _SignInScreenState createState() => _SignInScreenState();
 }
@@ -80,7 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 80),
+              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 40),
               child: Image.asset('assets/kocalogo.jpg', fit: BoxFit.cover),
             ),
             _isLoading

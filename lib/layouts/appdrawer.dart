@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:kota_carniwal2020/providers/auth.dart';
+import 'package:kota_carniwal2020/screens/homepagescreen.dart';
+import 'package:kota_carniwal2020/screens/myaccountscreen.dart';
+import 'package:kota_carniwal2020/screens/signinscreen.dart';
+import 'package:kota_carniwal2020/screens/submitfeedback.dart';
+import 'package:kota_carniwal2020/screens/transactionhistoryscreen.dart';
+import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -14,13 +21,14 @@ class AppDrawer extends StatelessWidget {
               'Koca Carniwal',
               style: TextStyle(
                 fontSize: 20,
-                color: Colors.grey,
               ),
             ),
           ),
           Divider(),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(MyAccountScreen.routename);
+            },
             leading: Icon(
               Icons.person_pin,
               color: theme.primaryColor,
@@ -28,7 +36,10 @@ class AppDrawer extends StatelessWidget {
             title: Text('My Account'),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(TransactionHistoryScreen.routename);
+            },
             leading: Icon(
               Icons.history,
               color: theme.primaryColor,
@@ -36,23 +47,29 @@ class AppDrawer extends StatelessWidget {
             title: Text('Transactions'),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(SubmitFeedback.routename);
+            },
             leading: Icon(
               Icons.rate_review,
               color: theme.primaryColor,
             ),
             title: Text('Submit Feedback'),
           ),
+          // ListTile(
+          //   onTap: () {},
+          //   leading: Icon(
+          //     Icons.alternate_email,
+          //     color: theme.primaryColor,
+          //   ),
+          //   title: Text('My Account'),
+          // ),
           ListTile(
-            onTap: () {},
-            leading: Icon(
-              Icons.alternate_email,
-              color: theme.primaryColor,
-            ),
-            title: Text('My Account'),
-          ),
-          ListTile(
-            onTap: () {},
+            onTap: () {
+              Provider.of<Auth>(context, listen: false).signOut();
+              Navigator.of(context)
+                  .pushReplacementNamed(SignInScreen.routename);
+            },
             leading: Icon(
               Icons.exit_to_app,
               color: theme.primaryColor,
@@ -60,14 +77,14 @@ class AppDrawer extends StatelessWidget {
             title: Text('Logout'),
           ),
           Divider(),
-          ListTile(
-            onTap: () {},
-            leading: Icon(
-              Icons.settings,
-              color: theme.primaryColor,
-            ),
-            title: Text('Settings'),
-          ),
+          // ListTile(
+          //   onTap: () {},
+          //   leading: Icon(
+          //     Icons.settings,
+          //     color: theme.primaryColor,
+          //   ),
+          //   title: Text('Settings'),
+          // ),
         ],
       ),
     );
