@@ -12,18 +12,18 @@ class MyAccountScreen extends StatelessWidget {
     vendorData = Provider.of<Auth>(context, listen: false).vendor;
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Accunt Info'),
+        title: const Text('My Accunt Info'),
       ),
       body: Container(
-        margin: EdgeInsets.all(20),
+        margin: const EdgeInsets.all(20),
         child: Column(
           children: <Widget>[
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.info,
                 color: Colors.purple,
               ),
-              title: Text(
+              title: const Text(
                 'Vendor ID',
                 style: TextStyle(
                   fontSize: 20,
@@ -32,18 +32,18 @@ class MyAccountScreen extends StatelessWidget {
               ),
               trailing: Text(
                 "ID: " + vendorData.id,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.person,
                 color: Colors.purple,
               ),
-              title: Text(
+              title: const Text(
                 'Vendor Name',
                 style: TextStyle(
                   fontSize: 20,
@@ -52,18 +52,18 @@ class MyAccountScreen extends StatelessWidget {
               ),
               trailing: Text(
                 vendorData.vendor_name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.email,
                 color: Colors.purple,
               ),
-              title: Text(
+              title: const Text(
                 'Email',
                 style: TextStyle(
                   fontSize: 20,
@@ -72,18 +72,18 @@ class MyAccountScreen extends StatelessWidget {
               ),
               trailing: Text(
                 vendorData.email,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.contacts,
                 color: Colors.purple,
               ),
-              title: Text(
+              title: const Text(
                 'Contact',
                 style: TextStyle(
                   fontSize: 20,
@@ -92,7 +92,7 @@ class MyAccountScreen extends StatelessWidget {
               ),
               trailing: Text(
                 vendorData.contact,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),

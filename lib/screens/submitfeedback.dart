@@ -7,15 +7,15 @@ class SubmitFeedback extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Feedback"),
+        title: const Text("Feedback"),
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Your Feedback",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -23,7 +23,7 @@ class SubmitFeedback extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               TextField(
                 maxLines: 10,
                 decoration: InputDecoration(
@@ -33,18 +33,18 @@ class SubmitFeedback extends StatelessWidget {
                   hintText: "Please Enter here, your feedback matters to us",
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               RaisedButton(
                 onPressed: () {
                   showDialog(
                     context: context,
                     builder: (ctx) => AlertDialog(
-                      title: Text('Thankyou'),
-                      content: Text(
+                      title: const Text('Thankyou'),
+                      content: const Text(
                           "Thankyou for proving us feedback your feedback matters to us"),
                       actions: <Widget>[
                         FlatButton(
-                          child: Text('Okay'),
+                          child: const Text('Okay'),
                           onPressed: () {
                             Navigator.of(context)
                                 .pushReplacementNamed(HomePageScreen.routename);
@@ -57,7 +57,7 @@ class SubmitFeedback extends StatelessWidget {
                   Navigator.of(context)
                       .pushReplacementNamed(HomePageScreen.routename);
                 },
-                child: Text('SUBMIT'),
+                child: const Text('SUBMIT'),
               )
             ],
           ),

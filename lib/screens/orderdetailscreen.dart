@@ -54,10 +54,10 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
           Navigator.of(context).popAndPushNamed(HomePageScreen.routename),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Order Summary'),
+          title: const Text('Order Summary'),
         ),
         body: isLoading
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : Column(
@@ -71,14 +71,14 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     productAmount: productData.price,
                     productName: productData.product_name,
                   ),
-                  Text(
+                  const Text(
                     'Thankyou for the order',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 10),
                   RaisedButton(
                     color: Colors.amber,
-                    child: Text(
+                    child: const Text(
                       "Scan the same item again",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

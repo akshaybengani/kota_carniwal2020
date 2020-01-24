@@ -24,14 +24,14 @@ class ProductTile extends StatelessWidget {
           children: <Widget>[
             Text(
               product.product_name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               product.price,
-              style: TextStyle(fontSize: 15),
+              style: const TextStyle(fontSize: 15),
             ),
           ],
         ),

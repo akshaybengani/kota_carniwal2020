@@ -43,26 +43,26 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
     final transactionData = Provider.of<TransactionProvider>(context).trans;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transaction History'),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.more_vert),
-          )
-        ],
+        title: const Text('Transaction History'),
+        // actions: <Widget>[
+        //   IconButton(
+        //     onPressed: () {},
+        //     icon: Icon(Icons.more_vert),
+        //   )
+        // ],
       ),
       body: RefreshIndicator(
         onRefresh: () => refreshTransactions(),
         child: isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : Container(
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child: Column(
                   children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'Total Earning',
                           style: TextStyle(
                               fontSize: 30,
@@ -71,13 +71,13 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                         ),
                         Text(
                           totalearning.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.6,
                       child: ListView.builder(

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:kota_carniwal2020/providers/auth.dart';
 import 'package:kota_carniwal2020/screens/homepagescreen.dart';
@@ -62,11 +61,11 @@ class _SignInScreenState extends State<SignInScreen> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('An Error Occured'),
+        title: const Text('An Error Occured'),
         content: Text(errorMessage),
         actions: <Widget>[
           FlatButton(
-            child: Text('Okay'),
+            child: const Text('Okay'),
             onPressed: () {
               Navigator.of(ctx).pop();
             },
@@ -83,15 +82,15 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+              margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
               child: Image.asset('assets/kocalogo.jpg', fit: BoxFit.cover),
             ),
             _isLoading
                 ? Center(
-                    child: CircularProgressIndicator(),
+                    child: const CircularProgressIndicator(),
                   )
                 : Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -112,7 +111,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               }
                             },
                           ),
-                          SizedBox(height: 20),
+                         const  SizedBox(height: 20),
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
                             obscureText: true,
@@ -130,7 +129,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               }
                             },
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           SizedBox(
                             width: double.infinity,
                             height: 50,
@@ -138,7 +137,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               color: Colors.purple,
                               elevation: 5,
                               onPressed: _submit,
-                              child: Text(
+                              child: const Text(
                                 'SIGN IN',
                                 style: TextStyle(
                                     fontSize: 20, color: Colors.white),

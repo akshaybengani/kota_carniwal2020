@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kota_carniwal2020/providers/auth.dart';
-import 'package:kota_carniwal2020/screens/homepagescreen.dart';
 import 'package:kota_carniwal2020/screens/myaccountscreen.dart';
 import 'package:kota_carniwal2020/screens/signinscreen.dart';
 import 'package:kota_carniwal2020/screens/submitfeedback.dart';
@@ -16,15 +15,15 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           Container(
             alignment: Alignment.centerLeft,
-            margin: EdgeInsets.only(top: 50, left: 10),
-            child: Text(
+            margin: const EdgeInsets.only(top: 50, left: 10),
+            child: const Text(
               'Koca Carniwal',
               style: TextStyle(
                 fontSize: 20,
               ),
             ),
           ),
-          Divider(),
+          const Divider(),
           ListTile(
             onTap: () {
               Navigator.of(context).pushNamed(MyAccountScreen.routename);
@@ -33,7 +32,7 @@ class AppDrawer extends StatelessWidget {
               Icons.person_pin,
               color: theme.primaryColor,
             ),
-            title: Text('My Account'),
+            title: const Text('My Account'),
           ),
           ListTile(
             onTap: () {
@@ -44,7 +43,7 @@ class AppDrawer extends StatelessWidget {
               Icons.history,
               color: theme.primaryColor,
             ),
-            title: Text('Transactions'),
+            title: const Text('Transactions'),
           ),
           ListTile(
             onTap: () {
@@ -54,7 +53,7 @@ class AppDrawer extends StatelessWidget {
               Icons.rate_review,
               color: theme.primaryColor,
             ),
-            title: Text('Submit Feedback'),
+            title: const Text('Submit Feedback'),
           ),
           // ListTile(
           //   onTap: () {},
@@ -74,9 +73,9 @@ class AppDrawer extends StatelessWidget {
               Icons.exit_to_app,
               color: theme.primaryColor,
             ),
-            title: Text('Logout'),
+            title: const Text('Logout'),
           ),
-          Divider(),
+          const Divider(),
           // ListTile(
           //   onTap: () {},
           //   leading: Icon(

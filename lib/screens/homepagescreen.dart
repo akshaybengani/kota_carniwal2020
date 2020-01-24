@@ -14,34 +14,34 @@ class HomePageScreen extends StatelessWidget {
     return Scaffold(
       drawer: AppDrawer(),
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: const Text('Dashboard'),
         actions: <Widget>[
           IconButton(
             onPressed: () {
               Share.share(
                   'Hey Download this amazing app for Kota Carniwal 2020 \n https://play.google.com/store/apps/details?id=com.akshaybengani.kocacarniwal2020 ');
             },
-            icon: Icon(Icons.share),
+            icon: const Icon(Icons.share),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.more_vert),
-          )
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: Icon(Icons.search),
+          // ),
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: Icon(Icons.more_vert),
+          // )
         ],
       ),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
-          margin: EdgeInsets.all(50),
+          margin: const EdgeInsets.all(50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,7 +56,7 @@ class HomePageScreen extends StatelessWidget {
                         child: Image.asset("assets/barcodescanner.png",
                             width: 100, height: 100),
                       ),
-                      Text('Scan & Sell'),
+                      const Text('Scan & Sell'),
                     ],
                   ),
                   Column(
@@ -69,13 +69,13 @@ class HomePageScreen extends StatelessWidget {
                         child: Image.asset("assets/transactionhistory.png",
                             width: 100, height: 100),
                       ),
-                      SizedBox(height: 20),
-                      Text('Transaction History'),
+                      const SizedBox(height: 20),
+                     const  Text('Transaction History'),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               // 1 kg bajri ka aata
               // 2 pack ayurveda mehndi
               Row(
@@ -92,8 +92,8 @@ class HomePageScreen extends StatelessWidget {
                         child: Image.asset("assets/cart.png",
                             width: 100, height: 100),
                       ),
-                      SizedBox(height: 20),
-                      Text('Products'),
+                      const SizedBox(height: 20),
+                      const Text('Products'),
                     ],
                   ),
                   Column(
@@ -106,8 +106,8 @@ class HomePageScreen extends StatelessWidget {
                         child: Image.asset("assets/support.png",
                             width: 100, height: 100),
                       ),
-                      SizedBox(height: 20),
-                      Text('Support'),
+                      const SizedBox(height: 20),
+                      const Text('Support'),
                     ],
                   ),
                 ],

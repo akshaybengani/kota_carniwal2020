@@ -19,7 +19,7 @@ class TransactionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       child: Container(
         height: 250,
         padding: EdgeInsets.all(5),
@@ -31,9 +31,11 @@ class TransactionCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                const SizedBox(width: 10),
                 status == "true"
-                    ? Icon(Icons.check_circle, color: Colors.green, size: 50)
-                    : Icon(Icons.not_interested, color: Colors.red, size: 50),
+                    ? const Icon(Icons.check_circle, color: Colors.green, size: 50)
+                    : const Icon(Icons.not_interested, color: Colors.red, size: 50),
+                const SizedBox(width: 10),
                 Expanded(child: Text(msg, style:TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
               ],
             ),
@@ -41,13 +43,13 @@ class TransactionCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                   'Available Balance',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 Text(
                   "Rs. " + availableBalance,
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 )
               ],
             ),
@@ -55,9 +57,9 @@ class TransactionCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                   'Product Name',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 Text(productName, style: TextStyle(fontSize: 16))
               ],
@@ -68,7 +70,7 @@ class TransactionCard extends StatelessWidget {
               children: <Widget>[
                 Text(
                   'Product Amount',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 Text("Rs. " + productAmount, style: TextStyle(fontSize: 16))
               ],

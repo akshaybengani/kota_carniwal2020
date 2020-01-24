@@ -46,16 +46,16 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Scan & Sell'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () {},
-          )
-        ],
+        title: const Text('Scan & Sell'),
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(Icons.more_vert),
+        //     onPressed: () {},
+        //   )
+        // ],
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -68,21 +68,23 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
                     productAmount: productData.price,
                     productName: productData.product_name,
                   ),
-                  Text(
+                  const Text(
                     'Thankyou for the order',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 10),
                   RaisedButton(
                     color: Colors.amber,
-                    child: Text(
+                    child: const Text(
                       "Scan Again",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacementNamed(BarCodeScanner.routename);
+                    },
                   )
                 ],
               ),

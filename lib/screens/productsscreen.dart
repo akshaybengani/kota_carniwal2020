@@ -38,20 +38,20 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Products'),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.more_vert),
-          ),
-        ],
+        title: const Text('Products'),
+        // actions: <Widget>[
+        //   IconButton(
+        //     onPressed: () {},
+        //     icon: Icon(Icons.more_vert),
+        //   ),
+        // ],
       ),
       body: RefreshIndicator(
         onRefresh: () => refreshProducts(context),
         child: isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : Container(
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child: GridView.builder(
                   padding: EdgeInsets.all(10),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

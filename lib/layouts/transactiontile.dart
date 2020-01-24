@@ -11,7 +11,7 @@ class TransactionTile extends StatelessWidget {
         ? Card(
             elevation: 5,
             child: ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.add_circle,
                 color: Colors.green,
               ),
@@ -26,12 +26,12 @@ class TransactionTile extends StatelessWidget {
         : Card(
             elevation: 5,
             child: ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.remove_circle,
                 color: Colors.red,
               ),
-              title: Text('Deduction Made'),
-              subtitle: Text('Contact Koca Team'),
+              title: const Text('Deduction Made'),
+              subtitle: const Text('Contact Koca Team'),
               trailing: Text(transaction.transaction_amount.toString()),
             ),
           );
