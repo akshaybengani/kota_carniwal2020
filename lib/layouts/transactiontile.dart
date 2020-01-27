@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kota_carniwal2020/providers/models.dart';
+import 'package:intl/intl.dart';
 
 class TransactionTile extends StatelessWidget {
   Transaction transaction;
@@ -7,6 +8,10 @@ class TransactionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String value = transaction.transactionDate.toString();
+    value = value + "000000";
+    int newTime = int.parse(value);
+    var tdate = DateFormat("hh-mm-ss dd-MM-yyyy").format(DateTime.fromMicrosecondsSinceEpoch(newTime));
     return transaction.transactionStatus == 1
         ? Card(
             elevation: 5,
@@ -17,10 +22,11 @@ class TransactionTile extends StatelessWidget {
               ),
               title: Text(
                 transaction.product_name,
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 18),
               ),
-              subtitle: Text("Product price : \t ${transaction.product_price}"),
-              trailing: Text(transaction.transaction_amount.toString()),
+              subtitle: Text("$tdate"),
+
+              trailing: Text("Rs. "+transaction.transaction_amount.toString()),
             ),
           )
         : Card(

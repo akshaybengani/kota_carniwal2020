@@ -71,10 +71,10 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     productAmount: productData.price,
                     productName: productData.product_name,
                   ),
-                  const Text(
+                  status =="true" ? Text(
                     'Thankyou for the order',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
+                  ) : Container(),
                   SizedBox(height: 10),
                   RaisedButton(
                     color: Colors.amber,
@@ -121,7 +121,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
     } on FormatException {
       setState(() {
         this.barcodevalue =
-            "User returned using the 'back' button before scanning anything";
+            "You have Pressed Back Button while Scanning Please Try Again!";
       });
     } catch (e) {
       print(e.toString());
@@ -143,7 +143,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
     print("Barcode value =$barcodevalue");
 
     if (!errorFlag) {
-      final url = "http://34.217.102.83/koca/index.php?/api_new/OrderDetails";
+      final url = "http://44.229.0.247/koca/index.php?/api_new/OrderDetails";
 
       try {
         final response = await http.post(url,
@@ -174,6 +174,8 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
         msg = "Something went wrong Please try again!";
         availableBalance = "Cannot Determine";
       }
+    } else {
+      msg = "Back Button Pressed while scanning Please Try again !";
     }
   }
 }

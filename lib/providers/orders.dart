@@ -20,7 +20,7 @@
 //     print("Barcode value =$barcodevalue");
 
 //     if (!errorFlag) {
-//       final url = "http://34.217.102.83/koca/index.php?/api_new/OrderDetails";
+//       final url = "http://44.229.0.247/koca/index.php?/api_new/OrderDetails";
 
 //       try {
 //         final response = await http.post(url,

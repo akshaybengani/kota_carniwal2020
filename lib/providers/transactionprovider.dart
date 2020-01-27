@@ -6,7 +6,7 @@ import 'package:kota_carniwal2020/providers/models.dart';
 class TransactionProvider with ChangeNotifier {
   List<Transaction> _trans = [];
 
-  int totalearning;
+  int totalearning = 0;
 
   List<Transaction> get trans {
     return _trans;
@@ -14,7 +14,7 @@ class TransactionProvider with ChangeNotifier {
 
   Future<void> fetchAndSetTransactions(String vendorid) async {
     final url =
-        "http://34.217.102.83/koca/index.php?/api_new/vendorTransationList";
+        "http://44.229.0.247/koca/index.php?/api_new/vendorTransationList";
 
     try {
       List<Transaction> loadedTransactions = [];
@@ -35,6 +35,10 @@ class TransactionProvider with ChangeNotifier {
 
       totalearning = extractedData['data']['total_earning'];
       print(totalearning);
+      if (totalearning.toString() == "null") {
+        totalearning = 0;
+      }
+      print(totalearning);
 
       listForCount = extractedData['data']['transation_history'];
 
@@ -48,19 +52,26 @@ class TransactionProvider with ChangeNotifier {
                 product_name: listForCount[i]['product_name'],
                 product_price: int.parse(listForCount[i]['product_price']),
                 transactionStatus: 1,
+                transactionDate: int.parse(listForCount[i]['transationDate']),
+               
               ),
+               
             );
+            //print(listForCount[i]['trasactionDate']);
           } else if (int.parse(listForCount[i]['transactionStatus']) == 0) {
             loadedTransactions.add(
               Transaction(
-                  transaction_amount:
-                      (listForCount[i]['transaction_amount'] != null)
-                          ? (int.parse(listForCount[i]['transaction_amount']))
-                          : 0,
-                  product_name: "",
-                  product_price: 0,
-                  transactionStatus: 0),
+                transaction_amount:
+                    (listForCount[i]['transaction_amount'] != null)
+                        ? (int.parse(listForCount[i]['transaction_amount']))
+                        : 0,
+                product_name: "",
+                product_price: 0,
+                transactionStatus: 0,
+                transactionDate: int.parse(listForCount[i]['transationDate']),
+              ),
             );
+            //print(listForCount[i]['trasactionDate']);
           }
         }
       }

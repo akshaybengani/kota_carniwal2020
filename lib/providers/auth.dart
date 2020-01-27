@@ -18,7 +18,7 @@ class Auth with ChangeNotifier {
 
   Future<void> signInWithEmailPassword(String email, String password) async {
     final url =
-        "http://34.217.102.83/koca/index.php?/api_new/vendorLoginDetails";
+        "http://44.229.0.247/koca/index.php?/api_new/vendorLoginDetails";
 
     try {
       final response = await http.post(url, headers: {

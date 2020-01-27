@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SupportScreen extends StatelessWidget {
   static const routename = '/supportscreen';
@@ -8,88 +9,132 @@ class SupportScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Contact Us'),
-        // actions: <Widget>[
-        //   IconButton(
-        //     onPressed: () {},
-        //     icon: Icon(Icons.more_vert),
-        //   )
-        // ],
       ),
       body: SingleChildScrollView(
-              child: Container(
-          width: double.infinity,
-          margin: const EdgeInsets.all(20),
+        child: Card(
+          margin: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              const SizedBox(height: 20),
-              const Text(
-                'Get In Touch',
+              SizedBox(height: 20),
+              Text(
+                'Contact US',
                 style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 30,
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 40,
+                  color: Colors.purple,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              const SizedBox(height: 20),
-              GestureDetector(
-                onTap: (){
-                  Share.share('tel:9876543210');
-                },
+              SizedBox(height: 20),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.green,
+                    ListTile(
+                      leading: Icon(
+                        Icons.person,
+                        color: Colors.purple,
                       ),
-                      child: const Icon(
-                        Icons.call,
-                        color: Colors.white,
-                        size: 50,
+                      title: Text(
+                        'Chandran M',
+                        style: TextStyle(fontSize: 20),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    const Text('Call Us',
-                        style:
-                            TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                    const Text('+91-9876543210', style: TextStyle(fontSize: 15))
-                  ],
-                ),
-              ),
-              const SizedBox(height: 40),
-              GestureDetector(
-                onTap: (){
-                  Share.share('support@motion.ac.in', subject: 'Help Needed!!');
-                },
-                child: Column(
-                         children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.green,
-                      ),
-                      child: const Icon(
-                        Icons.email,
-                        color: Colors.white,
-                        size: 50,
+                      trailing: GestureDetector(
+                        onTap: () {
+                          _launchURL("tel://9486836016");
+                          // UrlLauncher.launch("tel://<phone_number>");
+                        },
+                        child: Container(
+                          width: 80,
+                          alignment: Alignment.center,
+                          // padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            color: Colors.green,
+                          ),
+                          child: Icon(
+                            Icons.call,
+                            size: 30,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    const Text('Mail Us',
-                        style:
-                            TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-                    const Text('support@motion.ac.in', style: TextStyle(fontSize: 15))
+                    SizedBox(height: 20),
+                    ListTile(
+                      leading: Icon(
+                        Icons.person,
+                        color: Colors.purple,
+                      ),
+                      title: Text(
+                        'Aman Gautam',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      trailing: GestureDetector(
+                        onTap: () {
+                          _launchURL("tel://8585954490");
+                        },
+                        child: Container(
+                          width: 80,
+                          alignment: Alignment.center,
+                          // padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            color: Colors.green,
+                          ),
+                          child: Icon(
+                            Icons.call,
+                            size: 30,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ListTile(
+                      leading: Icon(
+                        Icons.person,
+                        color: Colors.purple,
+                      ),
+                      title: Text(
+                        'Hemant Dhakad',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      trailing: GestureDetector(
+                        onTap: () {
+                          _launchURL("tel://9079756832");
+                        },
+                        child: Container(
+                          width: 80,
+                          alignment: Alignment.center,
+                          // padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(40),
+                            color: Colors.green,
+                          ),
+                          child: Icon(
+                            Icons.call,
+                            size: 30,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),
       ),
     );
+  }
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

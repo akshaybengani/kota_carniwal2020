@@ -25,7 +25,7 @@ class ProductTile extends StatelessWidget {
             Text(
               product.product_name,
               style: const TextStyle(
-                fontSize: 25,
+                fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),

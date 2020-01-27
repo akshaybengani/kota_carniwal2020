@@ -51,10 +51,12 @@ class Transaction {
   final String product_name;
   final int product_price;
   final int transactionStatus;
+  final int transactionDate;
 
   Transaction({
     this.transaction_amount,
     this.product_name,
+    this.transactionDate,
     this.product_price,
     this.transactionStatus,
   });

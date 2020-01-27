@@ -14,7 +14,7 @@ class ProductsProvider with ChangeNotifier {
 
   Future<void> fetchAndSetProducts(String vendorid) async {
     final url =
-        'http://34.217.102.83/koca/index.php?/api_new/vendorProductList';
+        'http://44.229.0.247/koca/index.php?/api_new/vendorProductList';
 
     List<dynamic> _loadedProducts = [];
     List<Product> actualProduct = [];

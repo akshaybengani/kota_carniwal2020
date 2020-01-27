@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kota_carniwal2020/layouts/transactiontile.dart';
 import 'package:kota_carniwal2020/providers/auth.dart';
+import 'package:kota_carniwal2020/providers/models.dart';
 import 'package:kota_carniwal2020/providers/transactionprovider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,8 @@ class TransactionHistoryScreen extends StatefulWidget {
 class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   int totalearning = 0;
   bool isLoading = false;
+  bool noDataFlag = false;
+  List<Transaction> transactionData;
 
   @override
   void initState() {
@@ -22,6 +25,9 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
     isLoading = true;
     refreshTransactions().then((_) {
       setState(() {
+        if (totalearning == 0) {
+          noDataFlag = true;
+        }
         isLoading = false;
       });
     });
@@ -33,14 +39,14 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
     await Provider.of<TransactionProvider>(context, listen: false)
         .fetchAndSetTransactions(vendorid)
         .then((_) {
+          transactionData = Provider.of<TransactionProvider>(context, listen: false).trans;
       totalearning =
           Provider.of<TransactionProvider>(context, listen: false).totalearning;
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    final transactionData = Provider.of<TransactionProvider>(context).trans;
+  Widget build(BuildContext context) { 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Transaction History'),
@@ -78,14 +84,38 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.6,
-                      child: ListView.builder(
-                        itemCount: transactionData.length,
-                        itemBuilder: (ctx, index) =>
-                            TransactionTile(transactionData[index]),
-                      ),
-                    ),
+                    noDataFlag
+                        ? Container(
+                            margin: EdgeInsets.only(top: 100),
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  'No Transactions Found!',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.purple),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: 20),
+                                Text(
+                                  'If Problem persist then please\nLogOut and LogIn Again',
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          )
+                        : Container(
+                            // decoration: BoxDecoration(
+                            //     border:
+                            //         Border.all(width: 2, color: Colors.purple)),
+                            height: MediaQuery.of(context).size.height * 0.7,
+                            child: ListView.builder(
+                              itemCount: transactionData.length,
+                              itemBuilder: (ctx, index) =>
+                                  TransactionTile(transactionData[index]),
+                            ),
+                          ),
                   ],
                 ),
               ),

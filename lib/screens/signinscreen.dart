@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:kota_carniwal2020/providers/auth.dart';
+import 'package:kota_carniwal2020/providers/productsprovider.dart';
 import 'package:kota_carniwal2020/screens/homepagescreen.dart';
 import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
-
   static const routename = "/signinscreen";
 
   @override
@@ -16,6 +16,8 @@ class _SignInScreenState extends State<SignInScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   String email, password;
   bool _isLoading = false;
+  String myinitvalue;
+  
 
   Future<void> _submit() async {
     // To initiate validation checks performed by TextFormFields
@@ -33,8 +35,15 @@ class _SignInScreenState extends State<SignInScreen> {
 
     try {
       // Send the post request to server to initiate the login process
-      await Provider.of<Auth>(context, listen: false).signInWithEmailPassword(email, password);
+      await Provider.of<Auth>(context, listen: false)
+          .signInWithEmailPassword(email, password)
+          .then((_) async {
+        final vendorid = Provider.of<Auth>(context, listen: false).vendorid;
+        await Provider.of<ProductsProvider>(context, listen: false)
+            .fetchAndSetProducts(vendorid);
+      });
       // This will only run if the credentials are correct and network is available
+
       Navigator.of(context).pushReplacementNamed(HomePageScreen.routename);
     } on HttpException catch (error) {
       var errorMessage = "Authentication Failed";
@@ -77,6 +86,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -96,22 +106,25 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Column(
                         children: <Widget>[
                           TextFormField(
+                            initialValue: myinitvalue,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               labelText: 'Enter Username or Email',
                               border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10)),
+                                  borderRadius:
+                                      BorderRadius.circular(10)),
                             ),
                             onSaved: (value) {
                               email = value;
                             },
                             validator: (value) {
-                              if (value.isEmpty /* || !value.contains('@') */ ) {
+                              if (value
+                                  .isEmpty /* || !value.contains('@') */) {
                                 return 'Invalid Email Format';
                               }
                             },
                           ),
-                         const  SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
                             obscureText: true,

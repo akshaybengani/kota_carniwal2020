@@ -68,10 +68,10 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
                     productAmount: productData.price,
                     productName: productData.product_name,
                   ),
-                  const Text(
+                  status == "true" ? Text(
                     'Thankyou for the order',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
+                  ) : Container(),
                   SizedBox(height: 10),
                   RaisedButton(
                     color: Colors.amber,
@@ -100,6 +100,7 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
         Provider.of<ProductsProvider>(context, listen: false).my1stProduct;
         
     final timestampBig = DateTime.now().microsecondsSinceEpoch.toString();
+    print(timestampBig);
     final timestamp = timestampBig.substring(0, 10);
     print(timestamp);
 
@@ -109,7 +110,7 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
     print("Barcode value =$barcodevalue");
 
     if (!errorFlag) {
-      final url = "http://34.217.102.83/koca/index.php?/api_new/OrderDetails";
+      final url = "http://44.229.0.247/koca/index.php?/api_new/OrderDetails";
 
       try {
         final response = await http.post(url,
@@ -140,6 +141,8 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
         msg = "Something went wrong Please try again!";
         availableBalance = "Cannot Determine";
       }
+    } else {
+      msg = "Back Button Pressed while scanning Please Try again !";
     }
   }
 
@@ -163,7 +166,7 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
     } on FormatException {
       setState(() {
         this.barcodevalue =
-            "null (User returned using the 'back' button before scanning anything, Result) ";
+            "You have Pressed Back Button while Scanning Please Try Again!";
       });
     } catch (e) {
       setState(() {
@@ -171,4 +174,5 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
       });
     }
   }
+
 }

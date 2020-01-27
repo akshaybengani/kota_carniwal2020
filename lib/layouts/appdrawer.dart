@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kota_carniwal2020/providers/auth.dart';
 import 'package:kota_carniwal2020/screens/myaccountscreen.dart';
+import 'package:kota_carniwal2020/screens/productsscreen.dart';
 import 'package:kota_carniwal2020/screens/signinscreen.dart';
 import 'package:kota_carniwal2020/screens/submitfeedback.dart';
 import 'package:kota_carniwal2020/screens/transactionhistoryscreen.dart';
@@ -42,27 +43,21 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(
               Icons.history,
               color: theme.primaryColor,
+              
             ),
             title: const Text('Transactions'),
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushNamed(SubmitFeedback.routename);
+              Navigator.of(context).pushNamed(ProductsScreen.routename);
             },
             leading: Icon(
-              Icons.rate_review,
+              Icons.card_travel,
               color: theme.primaryColor,
             ),
-            title: const Text('Submit Feedback'),
+            title: const Text('Products'),
           ),
-          // ListTile(
-          //   onTap: () {},
-          //   leading: Icon(
-          //     Icons.alternate_email,
-          //     color: theme.primaryColor,
-          //   ),
-          //   title: Text('My Account'),
-          // ),
+          
           ListTile(
             onTap: () {
               Provider.of<Auth>(context, listen: false).signOut();
