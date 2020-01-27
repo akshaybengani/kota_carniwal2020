@@ -11,7 +11,7 @@ class TransactionTile extends StatelessWidget {
     String value = transaction.transactionDate.toString();
     value = value + "000000";
     int newTime = int.parse(value);
-    var tdate = DateFormat("hh-mm-ss dd-MM-yyyy").format(DateTime.fromMicrosecondsSinceEpoch(newTime));
+    var tdate = DateFormat("hh:mm:ss     dd-MM-yyyy").format(DateTime.fromMicrosecondsSinceEpoch(newTime));
     return transaction.transactionStatus == 1
         ? Card(
             elevation: 5,

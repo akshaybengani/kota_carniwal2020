@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:kota_carniwal2020/providers/auth.dart';
+import 'package:kota_carniwal2020/providers/databaseprovider.dart';
 import 'package:kota_carniwal2020/providers/productsprovider.dart';
 import 'package:kota_carniwal2020/providers/transactionprovider.dart';
 import 'package:kota_carniwal2020/screens/barcodescanner.dart';
+import 'package:kota_carniwal2020/screens/fetchlocaldata.dart';
 import 'package:kota_carniwal2020/screens/homepagescreen.dart';
 import 'package:kota_carniwal2020/screens/myaccountscreen.dart';
 import 'package:kota_carniwal2020/screens/orderdetailscreen.dart';
@@ -11,7 +15,9 @@ import 'package:kota_carniwal2020/screens/signinscreen.dart';
 import 'package:kota_carniwal2020/screens/submitfeedback.dart';
 import 'package:kota_carniwal2020/screens/supportscreen.dart';
 import 'package:kota_carniwal2020/screens/transactionhistoryscreen.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:sqflite/sqflite.dart';
 
 void main() {
   runApp(MyApp());
@@ -59,6 +65,54 @@ class MyApp extends StatelessWidget {
 class MyHomeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SignInScreen();
+    return FutureBuilder(
+      future: checkDatabase(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasData) {
+            if (snapshot.data) {
+              return FetchLocalDataScreen();
+            } else {
+              return SignInScreen();
+            }
+          }
+        }
+        return Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Checking Your\nLogin Status...',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Colors.purple,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 20),
+              CircularProgressIndicator(),
+              SizedBox(height: 20),
+              Text(
+                'Please Wait ...',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.purple,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<bool> checkDatabase() async {
+    Directory directory = await getApplicationDocumentsDirectory();
+    String path = directory.path + 'koca.db';
+    return databaseExists(path);
   }
 }

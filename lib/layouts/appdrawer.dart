@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kota_carniwal2020/providers/auth.dart';
 import 'package:kota_carniwal2020/screens/myaccountscreen.dart';
 import 'package:kota_carniwal2020/screens/productsscreen.dart';
-import 'package:kota_carniwal2020/screens/signinscreen.dart';
-import 'package:kota_carniwal2020/screens/submitfeedback.dart';
 import 'package:kota_carniwal2020/screens/transactionhistoryscreen.dart';
 import 'package:provider/provider.dart';
 
@@ -59,10 +58,11 @@ class AppDrawer extends StatelessWidget {
           ),
           
           ListTile(
-            onTap: () {
-              Provider.of<Auth>(context, listen: false).signOut();
-              Navigator.of(context)
-                  .pushReplacementNamed(SignInScreen.routename);
+            onTap: () async{
+              await Provider.of<Auth>(context, listen: false).signOutAndDeleteDatabase();
+              SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+              // Navigator.of(context)
+              //     .pushReplacementNamed(SignInScreen.routename);
             },
             leading: Icon(
               Icons.exit_to_app,
@@ -71,14 +71,7 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Logout'),
           ),
           const Divider(),
-          // ListTile(
-          //   onTap: () {},
-          //   leading: Icon(
-          //     Icons.settings,
-          //     color: theme.primaryColor,
-          //   ),
-          //   title: Text('Settings'),
-          // ),
+         
         ],
       ),
     );

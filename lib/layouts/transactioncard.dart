@@ -22,7 +22,7 @@ class TransactionCard extends StatelessWidget {
       margin: const EdgeInsets.all(16),
       child: Container(
         height: 250,
-        padding: EdgeInsets.all(5),
+        padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,7 +31,6 @@ class TransactionCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const SizedBox(width: 10),
                 status == "true"
                     ? const Icon(Icons.check_circle, color: Colors.green, size: 50)
                     : const Icon(Icons.not_interested, color: Colors.red, size: 50),
@@ -40,7 +39,7 @@ class TransactionCard extends StatelessWidget {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 const Text(
@@ -54,7 +53,7 @@ class TransactionCard extends StatelessWidget {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 const Text(
@@ -65,7 +64,7 @@ class TransactionCard extends StatelessWidget {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(

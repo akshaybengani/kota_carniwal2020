@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:kota_carniwal2020/providers/auth.dart';
+import 'package:kota_carniwal2020/providers/models.dart';
 import 'package:kota_carniwal2020/providers/productsprovider.dart';
 import 'package:kota_carniwal2020/screens/homepagescreen.dart';
 import 'package:provider/provider.dart';
@@ -16,8 +17,8 @@ class _SignInScreenState extends State<SignInScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   String email, password;
   bool _isLoading = false;
+  String loadingMsg = "Verifying your credentials...";
   String myinitvalue;
-  
 
   Future<void> _submit() async {
     // To initiate validation checks performed by TextFormFields
@@ -34,14 +35,31 @@ class _SignInScreenState extends State<SignInScreen> {
     });
 
     try {
+      Vendor vendor;
+
       // Send the post request to server to initiate the login process
       await Provider.of<Auth>(context, listen: false)
           .signInWithEmailPassword(email, password)
-          .then((_) async {
-        final vendorid = Provider.of<Auth>(context, listen: false).vendorid;
+          .then((_) {
+        setState(() {
+          loadingMsg = "Great! You are authenticated\n Let me get your name...";
+        });
+      }).then((_) async {
+        vendor = Provider.of<Auth>(context, listen: false).vendor;
         await Provider.of<ProductsProvider>(context, listen: false)
-            .fetchAndSetProducts(vendorid);
+            .fetchAndSetProducts(vendor.id);
+      }).then((_) {
+        setState(() {
+          loadingMsg =
+              "Welcome \n${vendor.vendor_name}\n to Koca Carniwal 2020\n Please wait while we \nSetup everything..";
+        });
+      })
+      .then((_) async {
+        await Provider.of<ProductsProvider>(context, listen: false)
+            .insertIntoDatabase(vendor);
       });
+
+
       // This will only run if the credentials are correct and network is available
 
       Navigator.of(context).pushReplacementNamed(HomePageScreen.routename);
@@ -86,7 +104,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -96,8 +113,29 @@ class _SignInScreenState extends State<SignInScreen> {
               child: Image.asset('assets/kocalogo.jpg', fit: BoxFit.cover),
             ),
             _isLoading
-                ? Center(
-                    child: const CircularProgressIndicator(),
+                ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        loadingMsg,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.purple,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 20),
+                      const CircularProgressIndicator(),
+                      SizedBox(height: 20),
+                      Text(
+                        'Please Wait...',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.purple,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   )
                 : Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -111,15 +149,13 @@ class _SignInScreenState extends State<SignInScreen> {
                             decoration: InputDecoration(
                               labelText: 'Enter Username or Email',
                               border: OutlineInputBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(10)),
+                                  borderRadius: BorderRadius.circular(10)),
                             ),
                             onSaved: (value) {
                               email = value;
                             },
                             validator: (value) {
-                              if (value
-                                  .isEmpty /* || !value.contains('@') */) {
+                              if (value.isEmpty /* || !value.contains('@') */) {
                                 return 'Invalid Email Format';
                               }
                             },
@@ -156,7 +192,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                     fontSize: 20, color: Colors.white),
                               ),
                             ),
-                          )
+                          ),
+                          // RaisedButton(
+                          //   color: Colors.green,
+                          //   onPressed: () async {
+                          //     await Provider.of<Auth>(context, listen: false).signOutAndDeleteDatabase();
+                          //   },
+                          //   child: Text('SignOutAndDeleteDatabase'),
+                          // ),
                         ],
                       ),
                     ),

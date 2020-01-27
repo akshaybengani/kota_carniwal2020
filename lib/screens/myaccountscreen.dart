@@ -15,7 +15,7 @@ class MyAccountScreen extends StatelessWidget {
         title: const Text('My Accunt Info'),
       ),
       body: Container(
-        margin: const EdgeInsets.all(20),
+        margin: const EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             ListTile(
@@ -24,18 +24,13 @@ class MyAccountScreen extends StatelessWidget {
                 color: Colors.purple,
               ),
               title: const Text(
-                'Vendor ID',
+                'ID',
                 style: TextStyle(
-                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               trailing: Text(
                 "ID: " + vendorData.id,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
               ),
             ),
             ListTile(
@@ -44,18 +39,13 @@ class MyAccountScreen extends StatelessWidget {
                 color: Colors.purple,
               ),
               title: const Text(
-                'Vendor Name',
+                'Name',
                 style: TextStyle(
-                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               trailing: Text(
                 vendorData.vendor_name,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
               ),
             ),
             ListTile(
@@ -66,16 +56,11 @@ class MyAccountScreen extends StatelessWidget {
               title: const Text(
                 'Email',
                 style: TextStyle(
-                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               trailing: Text(
                 vendorData.email,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
               ),
             ),
             ListTile(
@@ -86,16 +71,11 @@ class MyAccountScreen extends StatelessWidget {
               title: const Text(
                 'Contact',
                 style: TextStyle(
-                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               trailing: Text(
                 vendorData.contact,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
               ),
             ),
           ],

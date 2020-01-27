@@ -1,7 +1,7 @@
 class Product {
-  final String id;
-  final String product_name;
-  final String price;
+  String id;
+  String product_name;
+  String price;
 
   Product({
     this.id,
@@ -10,33 +10,11 @@ class Product {
   });
 }
 
-class Student {
-  final String stdid;
-  final String name;
-  final String email;
-  final String mobile;
-  final String instituteName;
-  final String paymentType;
-  final double amount;
-  final String address;
-
-  Student(
-    this.stdid,
-    this.name,
-    this.email,
-    this.mobile,
-    this.instituteName,
-    this.paymentType,
-    this.amount,
-    this.address,
-  );
-}
-
 class Vendor {
-  final String id;
-  final String vendor_name;
-  final String contact;
-  final String email;
+  String id;
+  String vendor_name;
+  String contact;
+  String email;
 
   Vendor({
     this.id,
@@ -60,5 +38,47 @@ class Transaction {
     this.product_price,
     this.transactionStatus,
   });
-  
+}
+
+class LocalData {
+  String pid;
+  String pname;
+  String pprice;
+  String vid;
+  String vname;
+  String vemail;
+  String vcontact;
+
+  LocalData({
+    this.pid,
+    this.pname,
+    this.pprice,
+    this.vid,
+    this.vname,
+    this.vemail,
+    this.vcontact,
+  });
+
+  Map<String, dynamic> toMap() {
+    var map = Map<String, dynamic>();
+
+    map['pid'] = pid;
+    map['pname'] = pname;
+    map['pprice'] = pprice;
+    map['vid'] = vid;
+    map['vname'] = vname;
+    map['vemail'] = vemail;
+    map['vcontact'] = vcontact;
+    return map;
+  }
+
+  LocalData.fromMapObject(Map<String, dynamic> map) {
+    this.pid = map['pid'];
+    this.pname = map['pname'];
+    this.pprice = map['pprice'];
+    this.vid = map['vid'];
+    this.vname = map['vname'];
+    this.vemail = map['vemail'];
+    this.vcontact = map['vcontact'];
+  }
 }
