@@ -136,7 +136,7 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
           availableBalance = "Cannot Determine";
         }
       } catch (e) {
-        print(e.toString());
+        print("The error message I get "+e.toString());
         status = "false";
         msg = "Something went wrong Please try again!";
         availableBalance = "Cannot Determine";
