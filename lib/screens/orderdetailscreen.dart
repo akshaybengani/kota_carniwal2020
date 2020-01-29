@@ -70,6 +70,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     availableBalance: availableBalance,
                     productAmount: productData.price,
                     productName: productData.product_name,
+                    barcodevalue: barcodevalue,
                   ),
                   status =="true" ? Text(
                     'Thankyou for the order',

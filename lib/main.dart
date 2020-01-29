@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:kota_carniwal2020/providers/auth.dart';
-import 'package:kota_carniwal2020/providers/databaseprovider.dart';
 import 'package:kota_carniwal2020/providers/productsprovider.dart';
 import 'package:kota_carniwal2020/providers/transactionprovider.dart';
 import 'package:kota_carniwal2020/screens/barcodescanner.dart';

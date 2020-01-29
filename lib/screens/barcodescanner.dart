@@ -67,6 +67,7 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
                     availableBalance: availableBalance,
                     productAmount: productData.price,
                     productName: productData.product_name,
+                    barcodevalue: barcodevalue,
                   ),
                   status == "true" ? Text(
                     'Thankyou for the order',
