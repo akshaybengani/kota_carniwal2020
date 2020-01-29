@@ -22,7 +22,7 @@ class Auth with ChangeNotifier {
 
   Future<void> fetchFromDatabase() async {
     localData = await databaseProvider.getLocalData();
-    print('LocalData Values :$localData');
+    //print('LocalData Values :$localData');
     vendor = Vendor(
       id: localData.vid,
       vendor_name: localData.vname,
@@ -72,7 +72,7 @@ class Auth with ChangeNotifier {
         throw HttpException(msg);
       }
     } catch (e) {
-      print(e.toString());
+      //print(e.toString());
       throw e;
     }
   }

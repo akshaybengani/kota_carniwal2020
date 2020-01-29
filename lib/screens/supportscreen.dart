@@ -14,8 +14,8 @@ class SupportScreen extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
           child: Column(
             children: <Widget>[
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Contact US',
                 style: TextStyle(
                   fontSize: 40,
@@ -23,17 +23,17 @@ class SupportScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   children: <Widget>[
                     ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.person,
                         color: Colors.purple,
                       ),
-                      title: Text(
+                      title: const Text(
                         'Chandran M',
                         style: TextStyle(fontSize: 20),
                       ),
@@ -50,7 +50,7 @@ class SupportScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(40),
                             color: Colors.green,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.call,
                             size: 30,
                             color: Colors.white,
@@ -58,13 +58,13 @@ class SupportScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.person,
                         color: Colors.purple,
                       ),
-                      title: Text(
+                      title: const Text(
                         'Aman Gautam',
                         style: TextStyle(fontSize: 20),
                       ),
@@ -80,7 +80,7 @@ class SupportScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(40),
                             color: Colors.green,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.call,
                             size: 30,
                             color: Colors.white,
@@ -88,13 +88,13 @@ class SupportScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.person,
                         color: Colors.purple,
                       ),
-                      title: Text(
+                      title: const Text(
                         'Hemant Dhakad',
                         style: TextStyle(fontSize: 20),
                       ),
@@ -110,7 +110,7 @@ class SupportScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(40),
                             color: Colors.green,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.call,
                             size: 30,
                             color: Colors.white,
@@ -118,7 +118,7 @@ class SupportScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 ),
               )

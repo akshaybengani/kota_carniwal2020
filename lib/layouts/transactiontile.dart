@@ -22,7 +22,7 @@ class TransactionTile extends StatelessWidget {
               ),
               title: Text(
                 transaction.product_name,
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
               subtitle: Text("$tdate"),
 

@@ -58,18 +58,18 @@ class _FetchLocalDataScreenState extends State<FetchLocalDataScreen> {
                 Text(
                   loadingMsg,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 40,
                       color: Colors.purple,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                CircularProgressIndicator(),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
+                const CircularProgressIndicator(),
+                const SizedBox(height: 10),
                 showSignInButton
                     ? RaisedButton(
                         color: Colors.purple,
-                        child: Text('Sign in Again'),
+                        child: const Text('Sign in Again'),
                         onPressed: () {
                           Navigator.of(context)
                               .pushReplacementNamed(SignInScreen.routename);

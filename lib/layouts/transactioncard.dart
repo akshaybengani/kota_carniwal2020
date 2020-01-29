@@ -49,7 +49,7 @@ class TransactionCard extends StatelessWidget {
                 const SizedBox(width: 10),
                 Expanded(
                     child: Text(msg,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold))),
               ],
             ),
@@ -76,14 +76,14 @@ class TransactionCard extends StatelessWidget {
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 16),
                 ),
-                Text(productName, style: TextStyle(fontSize: 16))
+                Text(productName, style: const TextStyle(fontSize: 16))
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                   'Product Amount',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 16),
@@ -95,7 +95,7 @@ class TransactionCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(
+                const Text(
                   'Barcode ID',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 16),

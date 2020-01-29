@@ -72,11 +72,11 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     productName: productData.product_name,
                     barcodevalue: barcodevalue,
                   ),
-                  status =="true" ? Text(
+                  status =="true" ? const Text(
                     'Thankyou for the order',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ) : Container(),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   RaisedButton(
                     color: Colors.amber,
                     child: const Text(
@@ -125,7 +125,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
             "You have Pressed Back Button while Scanning Please Try Again!";
       });
     } catch (e) {
-      print(e.toString());
+      //print(e.toString());
       setState(() {
         this.barcodevalue = 'Unknown Error $e';
       });
@@ -136,12 +136,12 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
     final vendorid = Provider.of<Auth>(context, listen: false).vendorid;
     final timestampBig = DateTime.now().microsecondsSinceEpoch.toString();
     final timestamp = timestampBig.substring(0,10);
-    print(timestamp);
+    //print(timestamp);
     
-    print("VendorID by provider =$vendorid");
-    print("Timestamp by micorsecondssinceepoch =$timestamp");
-    print("ProductId by Provider =${productData.id}");
-    print("Barcode value =$barcodevalue");
+    //print("VendorID by provider =$vendorid");
+    //print("Timestamp by micorsecondssinceepoch =$timestamp");
+    //print("ProductId by Provider =${productData.id}");
+    //print("Barcode value =$barcodevalue");
 
     if (!errorFlag) {
       final url = "http://44.229.0.247/koca/index.php?/api_new/OrderDetails";
@@ -158,8 +158,8 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
 
         final data = json.decode(response.body);
         final extractedData = data['response'];
-        print(data);
-        print(extractedData);
+        //print(data);
+        //print(extractedData);
 
         status = extractedData['status'].toString();
         msg = extractedData['msg'].toString();
@@ -170,7 +170,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
           availableBalance = "Cannot Determine";
         }
       } catch (e) {
-        print(e.toString());
+        //print(e.toString());
         status = "false";
         msg = "Something went wrong Please try again!";
         availableBalance = "Cannot Determine";

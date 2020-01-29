@@ -26,7 +26,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
   Future<void> refreshProducts(BuildContext context) async {
     final vendorid = Provider.of<Auth>(context, listen: false).vendorid;
-    print('Why I am printing');
+    //print('Why I am printing');
     await Provider.of<ProductsProvider>(context, listen: false)
         .fetchAndSetProducts(vendorid);
   }

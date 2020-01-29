@@ -81,7 +81,7 @@ class MyHomeApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
+              const Text(
                 'Checking Your\nLogin Status...',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -90,10 +90,10 @@ class MyHomeApp extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
-              CircularProgressIndicator(),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const CircularProgressIndicator(),
+              const SizedBox(height: 20),
+              const Text(
                 'Please Wait ...',
                 textAlign: TextAlign.center,
                 style: TextStyle(

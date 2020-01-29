@@ -25,20 +25,20 @@ class TransactionProvider with ChangeNotifier {
 
       final data = json.decode(response.body);
       final extractedData = data['response'];
-      print(extractedData);
+      //print(extractedData);
 
       final status = extractedData['status'];
-      print(status);
+      //print(status);
 
       final msg = extractedData['msg'];
-      print(msg);
+      //print(msg);
 
       totalearning = extractedData['data']['total_earning'];
-      print(totalearning);
+      //print(totalearning);
       if (totalearning.toString() == "null") {
         totalearning = 0;
       }
-      print(totalearning);
+      //print(totalearning);
 
       listForCount = extractedData['data']['transation_history'];
 
@@ -76,13 +76,13 @@ class TransactionProvider with ChangeNotifier {
         }
       }
 
-      print("Total List Items =${loadedTransactions.length}");
+      //print("Total List Items =${loadedTransactions.length}");
 
       // Copy all the transactions in this list
       _trans = loadedTransactions;
       notifyListeners();
     } catch (e) {
-      print(e.toString());
+      //print(e.toString());
     }
   }
 }

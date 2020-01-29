@@ -35,7 +35,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
   Future<void> refreshTransactions() async {
     final vendorid = Provider.of<Auth>(context, listen: false).vendorid;
-    print('I am listing Transactions');
+    //print('I am listing Transactions');
     await Provider.of<TransactionProvider>(context, listen: false)
         .fetchAndSetTransactions(vendorid)
         .then((_) {
@@ -50,12 +50,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Transaction History'),
-        // actions: <Widget>[
-        //   IconButton(
-        //     onPressed: () {},
-        //     icon: Icon(Icons.more_vert),
-        //   )
-        // ],
+        
       ),
       body: RefreshIndicator(
         onRefresh: () => refreshTransactions(),
@@ -70,7 +65,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                       children: <Widget>[
                         const Text(
                           'Total Earning',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                               color: Colors.purple),
@@ -89,7 +84,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                             margin: EdgeInsets.only(top: 100),
                             child: Column(
                               children: <Widget>[
-                                Text(
+                                const Text(
                                   'No Transactions Found!',
                                   style: TextStyle(
                                       fontSize: 20,
@@ -97,8 +92,8 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                                       color: Colors.purple),
                                   textAlign: TextAlign.center,
                                 ),
-                                SizedBox(height: 20),
-                                Text(
+                                const SizedBox(height: 20),
+                                const Text(
                                   'If Problem persist then please\nLogOut and LogIn Again',
                                   textAlign: TextAlign.center,
                                 )

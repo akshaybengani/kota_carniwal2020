@@ -25,7 +25,7 @@ class MyAccountScreen extends StatelessWidget {
               ),
               title: const Text(
                 'ID',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -40,7 +40,7 @@ class MyAccountScreen extends StatelessWidget {
               ),
               title: const Text(
                 'Name',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -55,7 +55,7 @@ class MyAccountScreen extends StatelessWidget {
               ),
               title: const Text(
                 'Email',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -70,7 +70,7 @@ class MyAccountScreen extends StatelessWidget {
               ),
               title: const Text(
                 'Contact',
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),

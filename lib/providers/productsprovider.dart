@@ -16,9 +16,9 @@ class ProductsProvider with ChangeNotifier {
   }
 
   Future<void> fetchFromDatabase() async {
-    print('I am going to fetch from localdatabase');
+    //print('I am going to fetch from localdatabase');
     localData = await databaseProvider.getLocalData();
-    print('Got Data from LocalData Values :$localData');
+    //print('Got Data from LocalData Values :$localData');
     my1stProduct = Product(
       id: localData.pid,
       price: localData.pprice,
@@ -27,12 +27,12 @@ class ProductsProvider with ChangeNotifier {
     // this.my1stProduct.id = localData.pid;
     // this.my1stProduct.price = localData.pprice;
     // this.my1stProduct.product_name = localData.pname;
-    print('Setted the localdatabase values to my 1st product');
+    //print('Setted the localdatabase values to my 1st product');
   }
 
   Future<void> insertIntoDatabase(Vendor vendor) async {
-    print(
-        'I am inserting Into Sqflite.\n my1stProduct items are: ${my1stProduct.id}, ${my1stProduct.price}, ${my1stProduct.product_name},  ');
+    //print(
+    //    'I am inserting Into Sqflite.\n my1stProduct items are: ${my1stProduct.id}, ${my1stProduct.price}, ${my1stProduct.product_name},  ');
     LocalData savelocaldata = LocalData(
       pid: my1stProduct.id,
       pname: my1stProduct.product_name,
@@ -52,7 +52,7 @@ class ProductsProvider with ChangeNotifier {
     );
 
     var result = await databaseProvider.insertLocalData(savelocaldata);
-    print('I have tried to insert in localdatabase my result code is :$result');
+    //print('I have tried to insert in localdatabase my result code is :$result');
     if (result == 0) print('Some Problem occured while inserting');
   }
 
@@ -110,7 +110,7 @@ class ProductsProvider with ChangeNotifier {
       //   //print(myresponse);
       // }
     } catch (e) {
-      print('Some error occured \n $e');
+      //print('Some error occured \n $e');
       myresponse = e.toString();
       notifyListeners();
     }

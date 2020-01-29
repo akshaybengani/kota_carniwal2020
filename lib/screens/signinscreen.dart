@@ -75,7 +75,7 @@ class _SignInScreenState extends State<SignInScreen> {
     } catch (e) {
       // To display the user with an Alert Dialog about the error.
       _showErrorDialog("Could not authenticate you. Please try again later");
-      print(e.toString());
+      //print(e.toString());
     }
     // This is required in anycase wheather login or not we need to turn off the loading spinner
     setState(() {
@@ -125,10 +125,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             color: Colors.purple,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       const CircularProgressIndicator(),
-                      SizedBox(height: 20),
-                      Text(
+                      const SizedBox(height: 20),
+                      const Text(
                         'Please Wait...',
                         style: TextStyle(
                             fontSize: 20,
