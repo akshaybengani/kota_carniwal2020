@@ -100,7 +100,7 @@ class SupportScreen extends StatelessWidget {
                       ),
                       trailing: GestureDetector(
                         onTap: () {
-                          _launchURL("tel://9079756832");
+                          _launchURL("tel://9079756892");
                         },
                         child: Container(
                           width: 80,

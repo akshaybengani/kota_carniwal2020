@@ -21,7 +21,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
   String barcodevalue;
   bool errorFlag = true;
   bool isLoading = true;
-  String status ="";
+  String status = "";
   String msg = "";
   String availableBalance = "";
 
@@ -72,10 +72,13 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     productName: productData.product_name,
                     barcodevalue: barcodevalue,
                   ),
-                  status =="true" ? const Text(
-                    'Thankyou for the order',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ) : Container(),
+                  status == "true"
+                      ? const Text(
+                          'Thankyou for the order',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        )
+                      : Container(),
                   const SizedBox(height: 10),
                   RaisedButton(
                     color: Colors.amber,
@@ -88,12 +91,13 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     ),
                     onPressed: () {
                       Navigator.of(context).pushReplacementNamed(
-                          OrderDetailScreen.routename,
-                          arguments: {
-                            'id': productData.id,
-                            'name': productData.product_name,
-                            'price': productData.price,
-                          });
+                        OrderDetailScreen.routename,
+                        arguments: {
+                          'id': productData.id,
+                          'name': productData.product_name,
+                          'price': productData.price,
+                        },
+                      );
                     },
                   )
                 ],
@@ -135,9 +139,9 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
   Future<void> fetchOrderData() async {
     final vendorid = Provider.of<Auth>(context, listen: false).vendorid;
     final timestampBig = DateTime.now().microsecondsSinceEpoch.toString();
-    final timestamp = timestampBig.substring(0,10);
+    final timestamp = timestampBig.substring(0, 10);
     //print(timestamp);
-    
+
     //print("VendorID by provider =$vendorid");
     //print("Timestamp by micorsecondssinceepoch =$timestamp");
     //print("ProductId by Provider =${productData.id}");
@@ -159,18 +163,19 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
         final data = json.decode(response.body);
         final extractedData = data['response'];
         //print(data);
-        //print(extractedData);
+        print(extractedData);
 
         status = extractedData['status'].toString();
         msg = extractedData['msg'].toString();
-        if (status == "true" || msg == "insufficient Balance") {
+        if (status == "true" || msg == "insufficient Balance" || msg == "Try After 5 minutes") {
+          print('I worked');
           availableBalance =
               extractedData['data']['available_amount'].toString();
         } else {
           availableBalance = "Cannot Determine";
         }
       } catch (e) {
-        //print(e.toString());
+        print(e.toString());
         status = "false";
         msg = "Something went wrong Please try again!";
         availableBalance = "Cannot Determine";

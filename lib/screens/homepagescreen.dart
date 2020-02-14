@@ -22,7 +22,7 @@ class HomePageScreen extends StatelessWidget {
           IconButton(
             onPressed: () {
               Share.share(
-                  'Hey Download this amazing app for Kota Carniwal 2020 \n https://play.google.com/store/apps/details?id=com.akshaybengani.kocacarniwal2020 ');
+                  'Hey Vendors Download KOCA2020 for the annual largest student fest Kota Carnival 2020 \n https://play.google.com/store/apps/details?id=com.akshaybengani.kocacarnival2020 ');
             },
             icon: const Icon(Icons.share),
           ),

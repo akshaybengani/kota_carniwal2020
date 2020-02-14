@@ -1,4 +1,4 @@
-package com.akshaybengani.kota_carniwal2020
+package com.akshaybengani.kota_carnival2020
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

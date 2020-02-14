@@ -130,7 +130,7 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
 
         status = extractedData['status'].toString();
         msg = extractedData['msg'].toString();
-        if (status == "true" || msg == "insufficient Balance") {
+        if (status == "true" || msg == "insufficient Balance" || msg == "Try After 5 minutes") {
           availableBalance =
               extractedData['data']['available_amount'].toString();
         } else {

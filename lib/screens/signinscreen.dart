@@ -75,7 +75,7 @@ class _SignInScreenState extends State<SignInScreen> {
     } catch (e) {
       // To display the user with an Alert Dialog about the error.
       _showErrorDialog("Could not authenticate you. Please try again later");
-      //print(e.toString());
+      print(e.toString());
     }
     // This is required in anycase wheather login or not we need to turn off the loading spinner
     setState(() {

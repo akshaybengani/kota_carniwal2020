@@ -1,16 +1,14 @@
 # kota_carniwal2020
 
-A new Flutter project.
+* Kota Carniwal is the largest youth festival in Asia, I have developed an Application for the event the application is specifically designed for vendors, for making transactions to students wallet.
 
-## Getting Started
+* Every Student partipated got an BarCode which they show to vendor and buy product or services from vendor the application uses REST API to make a transaction by the backend.
 
-This project is a starting point for a Flutter application.
+* Since its specifically designed for the vendors and particular event its not available on Play Store currently.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Some ScreenShots of App
+<img src = "resources/ss/sc1.png" width=200 >
+<img src = "resources/ss/sc2.png" width=200 >
+<img src = "resources/ss/sc3.png" width=200 >
+<img src = "resources/ss/sc4.png" width=200 >

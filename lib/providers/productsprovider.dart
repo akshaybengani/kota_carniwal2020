@@ -68,7 +68,7 @@ class ProductsProvider with ChangeNotifier {
         headers: {'Vendorid': '$vendorid'},
       );
       final extractedData = json.decode(response.body);
-      //print(extractedData);
+      print(extractedData);
 
       // This is the bool status is everything ok or not
       //final String status = extractedData['response']['status'];
@@ -110,7 +110,7 @@ class ProductsProvider with ChangeNotifier {
       //   //print(myresponse);
       // }
     } catch (e) {
-      //print('Some error occured \n $e');
+      print('Some error occured \n $e');
       myresponse = e.toString();
       notifyListeners();
     }

@@ -48,13 +48,13 @@ class Auth with ChangeNotifier {
 
       final data = json.decode(response.body);
       final extractedData = data['response'];
-      //print(extractedData);
+      print(extractedData);
 
       final status = extractedData['status'];
-      //print('My Status is =$status');
+      print('My Status is =$status');
 
       final msg = extractedData['msg'];
-      //print('My Message is =$msg');
+      print('My Message is =$msg');
 
       if (status == 'true') {
         // This is for product listing
